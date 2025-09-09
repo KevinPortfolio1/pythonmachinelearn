@@ -1,0 +1,59 @@
+🔰 新手階段
+
+概念理解
+
+	什麼是監督式學習？→ 給模型「特徵 + 標籤」的訓練方式
+
+	常見任務：分類（Classification）、迴歸（Regression）
+
+基本演算法
+
+	線性迴歸（Linear Regression）
+
+	邏輯迴歸（Logistic Regression）
+
+	K 最近鄰（K-NN）
+
+	決策樹（Decision Tree）
+
+🧭 進階者階段
+
+理解模型運作原理
+
+	損失函數（Loss Function）
+
+	過擬合 vs 欠擬合
+
+	評估指標（如準確率、召回率、F1-score）
+
+	使用框架與工具
+
+	Python + Scikit-learn、Pandas、NumPy
+
+	使用 Jupyter Notebook 做實驗
+
+🧙‍♂️ 熟練者 / 老手階段
+
+	進階模型
+
+	支援向量機（SVM）
+
+	隨機森林（Random Forest）
+
+	梯度提升機（XGBoost / LightGBM）
+
+	神經網路（NN for supervised tasks）
+
+	模型優化與調參
+
+	交叉驗證（Cross-validation）
+
+	超參數調整（Grid search, Random search）
+
+	模型集成（Ensemble methods）
+
+	實戰經驗
+
+	Kaggle 競賽
+
+	真實專案開發、部署（MLOps）
