@@ -1,0 +1,25 @@
+🧠 AI 應用與其對應的機器學習方向
+應用類型										說明												所屬機器學習方向 / 子領域															常用技術或模型
+🖼️ 圖片辨識（Image Classification / Detection）	分辨圖片中是什麼（如貓狗分類、物體偵測、人臉辨識）	監督式學習（Supervised Learning）+ 深度學習 / CNN（Convolutional Neural Networks）	ResNet、EfficientNet、YOLO、Faster R-CNN
+🧠 圖片自動建立（Image Generation）				從無到有生成圖像，如 AI 藝術圖、AI人像				生成式模型（Generative Models）+ 深度學習											GAN（生成對抗網路）、Diffusion models（如 Stable Diffusion、DALL·E）
+🎨 圖片修改（Image Editing）					修改圖片內容、換臉、上色、補全缺失					生成式學習（Generative Learning）+ 圖像處理的自監督學習（Self-supervised）			Inpainting、StyleGAN、ControlNet、Segment Anything
+✍️ 文章建立（Text Generation）					AI 自動寫作、摘要、翻譯、改寫						自然語言處理（NLP）+ 生成式預訓練模型（LLM）										GPT 系列、T5、BERT（理解）、LLaMA、Claude
+🗣️ 人機溝通（對話式 AI）							聊天機器人、客服助手、語音助手						自然語言處理（NLP）+ 強化學習（在 LLM 微調中）										ChatGPT、Gemini、Rasa、DialogGPT、ReAct (Reasoning + Acting)
+
+
+🔍 更進一步的技術分類
+技術領域				簡介									應用連結
+🎯 監督式學習			用標註過的資料訓練模型					圖片分類、語音辨識
+🧩 自監督學習			從資料本身學習結構，不需標籤			圖像補全、語言理解
+🎨 生成式學習			模型學會「創造」新內容					AI 畫圖、AI 寫作、換臉
+🧠 深度學習				用神經網路處理大量資料，找出抽象特徵	幾乎所有視覺與語言應用
+🌍 自然語言處理（NLP）	處理和理解人類語言						ChatGPT、文章生成、語意分析
+🔁 強化學習				讓模型透過「試錯」學會最佳策略			對話策略、遊戲 AI、機器控制
+
+
+🛠️ 實際應用中的模型舉例（2025 年熱門）
+領域		模型									功能
+圖片生成	Stable Diffusion XL, DALL·E 3			文生圖、圖片修改
+圖片辨識	YOLOv8, SAM (Segment Anything Model)	即時物體偵測、圖像分割
+文字生成	GPT-4o, Claude 3, Gemini 1.5			寫作、摘要、翻譯、教學助理
+對話式 AI	ChatGPT, Meta AI, Mistral				問答、聊天、輔助決策
