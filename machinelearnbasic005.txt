@@ -1,0 +1,101 @@
+scikit
+
+1.Biclustering
+  同時對資料的行與列進行分群（適用於基因資料或推薦系統）
+2.Calibration
+  將分類器的預測機率進行校準，使其更接近真實的概率
+3.Classification
+  用於解決分類問題，例如二元分類或多類別分類
+4.Clustering
+	對未標籤的資料自動分群
+5.Covariance estimation
+    用來估計資料分佈的共變異數矩陣
+6.Cross decomposition
+	用於多變量分析，例如 PLS（Partial Least Squares）
+7.Dataset 
+   包含資料載入工具和合成資料產生器
+8.Decision Trees
+	決策樹演算法，用於分類與回歸
+9.Decomposition
+	將資料分解為簡單結構，常用於降維
+10.Developing Estimators
+	自定義模型（Estimator）的架構與設計方法
+11.Ensemble methods
+	將多個模型結合以提高準確率
+12.Feature Selection
+	選出對模型表現最有貢獻的特徵
+13.Frozen Estimators
+	預先訓練好、不能再變更的模型（例如用於部署的模型）
+14.Gaussian Mixture Models
+	使用高斯分佈的混合模型來擬合資料
+15.Gaussian Process for Machine Learning
+	一種貝式模型，能提供不確定性估計
+16.Generalized Linear Models
+	對應於線性模型的擴展
+17.Inspection
+	分析模型行為，例如重要特徵排名
+18.Kernel Approximation
+	對 kernel 方法（如 SVM）做近似處理，提高效能
+19.Manifold learning
+	捕捉資料的非線性低維結構
+20.Miscellaneous
+	其他未分類的功能，如統計工具、工具函式等
+21.Missing Value Imputation
+	處理資料中缺失值
+22.Model Selection
+	模型評估與選擇工具
+23.Multiclass methods
+	專門處理多類別分類問題的策略
+24.Multioutput methods
+	同時預測多個輸出（標籤）
+25.Nearest Neighbors
+	基於鄰近樣本的模型
+26.Neural Networks
+	簡單的前饋神經網路（非深度學習）
+27.Pipelines and composite estimators
+	把資料處理與模型組成流程
+28.Preprocessing
+	資料前處理，例如標準化、編碼等
+29.Semi Supervised Classification
+	結合有標籤與無標籤資料進行學習
+30.Support Vector Machines
+	支援向量機（SVM）模型
+31.Working with text documents
+	處理文字資料的工具
+	
+🧭 分類總表
+分類方式		對應模組範例
+監督式學習		Classification, SVM, Decision Trees, Ensemble, GLM, MLP
+非監督式學習	Clustering, Decomposition, GMM, Manifold
+半監督學習		Semi-Supervised Classification
+混合方法		Pipelines, Feature Selection, Preprocessing
+強化學習		❌ 不支援
+資料與工具		Datasets, Text Processing, Misc
+
+🔁 建議的學習順序（實戰導向）
+
+使用 datasets
+
+	load_iris(), load_breast_cancer(), load_digits()
+
+分類任務入門
+
+	LogisticRegression, DecisionTree, RandomForest
+
+資料前處理
+
+	StandardScaler, SimpleImputer
+
+評估與選模
+
+	accuracy_score, cross_val_score, GridSearchCV
+
+分群 & 降維
+
+	KMeans, PCA, TSNE
+
+pipeline 整合
+
+	Pipeline, make_pipeline
+
+嘗試自有資料集或 Kaggle
