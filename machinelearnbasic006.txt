@@ -1,0 +1,108 @@
+Scikit 
+
+1.Linear Models
+
+	線性模型是一類假設輸出變數（y）與輸入變數（X）之間呈線性關係的模型。
+	
+	常見的線性模型包括：
+
+		線性回歸（Linear Regression）
+
+		邏輯回歸（Logistic Regression）
+
+		Ridge Regression / Lasso Regression
+
+		SGDClassifier / SGDRegressor
+		
+from sklearn.linear_model import LinearRegression
+from sklearn.model_selection import train_test_split
+from sklearn.datasets import make_regression
+import matplotlib.pyplot as plt
+
+# 產生模擬資料
+X, y = make_regression(n_samples=100, n_features=1, noise=10, random_state=42)
+
+# 分割資料集
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# 建立模型
+model = LinearRegression()
+model.fit(X_train, y_train)
+
+# 預測
+y_pred = model.predict(X_test)
+
+# 繪圖
+plt.scatter(X_test, y_test, color='blue', label='Actual')
+plt.plot(X_test, y_pred, color='red', label='Predicted')
+plt.legend()
+plt.title("Linear Regression Example")
+plt.show()
+
+# 印出係數與截距
+print("係數 (slope):", model.coef_)
+print("截距 (intercept):", model.intercept_)
+
+
+✅ 標準流程：
+
+資料準備（Data Preparation）
+
+建立模型物件（Instantiate model）
+
+訓練模型（fit）
+
+模型預測（predict）
+
+模型評估（score, metrics）
+
+
+2.Gaussian mixture models
+
+	高斯混合模型（Gaussian Mixture Model, GMM）是一種機率式聚類模型，假設資料來自數個不同的高斯分布（正態分布）的組合。
+	與 K-Means 相比，GMM 更靈活，能夠建模橢圓形的資料分布。
+
+	屬於非監督學習（unsupervised learning）
+
+	可以使用 EM 演算法來估計參數
+	
+from sklearn.mixture import GaussianMixture
+from sklearn.datasets import make_blobs
+import matplotlib.pyplot as plt
+
+# 產生模擬資料（3個群）
+X, y_true = make_blobs(n_samples=300, centers=3, cluster_std=0.60, random_state=0)
+
+# 建立 GMM 模型
+gmm = GaussianMixture(n_components=3, random_state=0)
+gmm.fit(X)
+
+# 預測 cluster label
+labels = gmm.predict(X)
+
+# 繪圖
+plt.scatter(X[:, 0], X[:, 1], c=labels, cmap='viridis')
+plt.title("Gaussian Mixture Model Clustering")
+plt.show()
+	
+✅ 標準流程：
+
+資料準備（Data Preparation）
+
+建立模型物件（GaussianMixture）
+
+訓練模型（fit）
+
+推論分群結果（predict）
+
+（可選）取得機率 / 各成分參數（predict_proba, means_, covariances_）
+
+
+-------------------------------------------------------------------------------------
+🔁 通用 Scikit-learn 工作流程總結：
+步驟	說明				方法名稱
+1		載入或建立資料		X, y
+2		建立模型			model = ...()
+3		訓練模型			model.fit(X, y)
+4		預測或分群結果		model.predict()
+5		評估或查看參數		score(), metrics, model.coef_, means_ 等
