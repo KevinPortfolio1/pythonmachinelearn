@@ -6,3 +6,4 @@
  ## scikit內建應用範例 2025/09/13  
  ## scikit模型與外部資料格式 2025/09/14  
  ## scikit模型整理與學習方向 2025/09/18  
+ ## scikit LinearRegression 2025/09/19  
