@@ -1,0 +1,74 @@
+DecisionTreeClassifier：
+掌握分類與模型視覺化
+Scikit-learn 中的一種監督式學習演算法，用來做分類任務。
+它透過一系列的是/否問題（類似流程圖）把資料逐步分開，直到分類清楚為止。
+
+
+from sklearn.datasets import load_iris
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.model_selection import train_test_split
+
+# 載入資料
+iris = load_iris()
+X, y = iris.data, iris.target
+
+# 分割資料
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# 建立與訓練模型
+clf = DecisionTreeClassifier(criterion='gini', max_depth=3, random_state=42)
+clf.fit(X_train, y_train)
+
+# 預測與評估
+y_pred = clf.predict(X_test)
+from sklearn.metrics import accuracy_score
+print("Accuracy:", accuracy_score(y_test, y_pred))
+
+
+視覺化決策樹
+
+import matplotlib.pyplot as plt
+from sklearn.tree import plot_tree
+
+plt.figure(figsize=(12, 8))
+plot_tree(clf, filled=True, feature_names=iris.feature_names, class_names=iris.target_names)
+plt.show()
+
+
+from sklearn.tree import export_graphviz
+import graphviz
+
+dot_data = export_graphviz(clf, out_file=None,
+                           feature_names=iris.feature_names,
+                           class_names=iris.target_names,
+                           filled=True, rounded=True,
+                           special_characters=True)
+
+graph = graphviz.Source(dot_data)
+graph.render("iris_tree")  # 會儲存為 iris_tree.pdf
+graph.view()
+
+
+import pandas as pd
+
+feature_importances = pd.Series(clf.feature_importances_, index=iris.feature_names)
+print(feature_importances.sort_values(ascending=False))
+
+
+from mlxtend.plotting import plot_decision_regions
+import numpy as np
+
+# 只取前兩個特徵
+X2D = X[:, :2]
+X2D_train, X2D_test, y2D_train, y2D_test = train_test_split(X2D, y, test_size=0.2, random_state=42)
+
+clf2D = DecisionTreeClassifier(max_depth=3)
+clf2D.fit(X2D_train, y2D_train)
+
+plot_decision_regions(X2D_train, y2D_train, clf=clf2D, legend=2)
+plt.xlabel(iris.feature_names[0])
+plt.ylabel(iris.feature_names[1])
+plt.title('Decision Boundary')
+plt.show()
+
+

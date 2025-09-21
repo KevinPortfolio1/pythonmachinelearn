@@ -1,0 +1,37 @@
+KMeans + PCA：
+
+了解非監督學習與資料視覺化
+PCA 是一種無監督的降維技術，可將高維資料壓縮到較低維度（例如 2D 或 3D），便於視覺化
+KMeans 是一種常見的非監督分群演算法，可將資料點分成 K 個群集。
+使用 PCA 可減少維度，消除雜訊並提高 KMeans 的效率與效果。
+也能將高維分群結果投影至 2D 方便視覺化。
+
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.datasets import load_iris
+from sklearn.decomposition import PCA
+from sklearn.cluster import KMeans
+
+# 使用 iris 資料集 (4維)
+data = load_iris()
+X = data.data
+y = data.target  # 原本的類別標籤（僅用於對照）
+
+
+pca = PCA(n_components=2)
+X_pca = pca.fit_transform(X)
+
+kmeans = KMeans(n_clusters=3, random_state=42)
+clusters = kmeans.fit_predict(X)
+
+plt.figure(figsize=(8, 6))
+plt.scatter(X_pca[:, 0], X_pca[:, 1], c=clusters, cmap='viridis', s=50)
+plt.title("KMeans clustering after PCA")
+plt.xlabel("PCA Component 1")
+plt.ylabel("PCA Component 2")
+plt.colorbar(label='Cluster Label')
+plt.show()
+
+
+	
+
