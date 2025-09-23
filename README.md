@@ -7,3 +7,4 @@
  ## scikit模型與外部資料格式 2025/09/14  
  ## scikit模型整理與學習方向 2025/09/18  
  ## scikit LinearRegression 2025/09/19  
+ ## scikit train_test_split 2025/09/23  
