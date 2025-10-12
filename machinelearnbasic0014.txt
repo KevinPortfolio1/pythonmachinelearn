@@ -1,0 +1,84 @@
+Scikit-learn（常縮寫為 sklearn）
+
+是 Python 中非常流行的機器學習套件
+，其中的 svm 模組提供了支援向量機（SVM, Support Vector Machine）相關的演算法
+SVM 是一種強大的分類與迴歸模型，尤其適合處理中小型資料集，並在分類問題上有非常好的表現。
+
+SVM 是一種監督式學習演算法，
+目標是找出一條「超平面（hyperplane）」，能最大化區分兩類資料的間隔（margin）。
+對於線性可分的資料，它會找出一條將兩類資料分開的直線（或平面）。
+對於非線性可分的資料，SVM 可以透過 核函數（kernel function） 將資料轉換到高維空間，使得資料變得線性可分。
+常見的 kernel 包括：
+	linear: 線性核
+	poly: 多項式核
+	rbf: 高斯徑向基核（Radial Basis Function，預設值）
+	sigmoid: 類神經網路中的 sigmoid 函數
+
+from sklearn import datasets
+from sklearn.model_selection import train_test_split
+from sklearn.svm import SVC
+from sklearn.metrics import classification_report, accuracy_score
+
+iris = datasets.load_iris()
+X = iris.data
+y = iris.target
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
+
+
+model = SVC(kernel='rbf', C=1.0, gamma='scale')  # 使用 RBF kernel
+model.fit(X_train, y_train)
+
+y_pred = model.predict(X_test)
+
+print("Accuracy:", accuracy_score(y_test, y_pred))
+print(classification_report(y_test, y_pred))
+
+
+實際應用方向
+  圖像識別 / 圖像分類
+  文字分類 / 自然語言處理
+  生物資訊學 / 醫療診斷
+  金融風險分析 / 欺詐偵測
+  工業品檢 / 異常偵測
+  語音辨識
+  推薦系統（簡易分類場景）
+  
+  
+import matplotlib.pyplot as plt
+from sklearn import datasets
+from sklearn.model_selection import train_test_split
+from sklearn.svm import SVC
+from sklearn.metrics import classification_report, accuracy_score
+
+# 1. 載入手寫數字資料集
+digits = datasets.load_digits()
+
+# 特徵與標籤
+X = digits.data       # 每張圖片展平成一個 64 維向量 (8x8)
+y = digits.target     # 目標數字 (0~9)
+
+# 2. 分割訓練與測試資料
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
+
+# 3. 建立與訓練 SVM 模型
+model = SVC(kernel='rbf', gamma=0.001, C=10)
+model.fit(X_train, y_train)
+
+# 4. 預測
+y_pred = model.predict(X_test)
+
+# 5. 評估模型
+print("Accuracy:", accuracy_score(y_test, y_pred))
+print("\nClassification Report:\n", classification_report(y_test, y_pred))
+
+# 6. 顯示前幾張測試圖片與預測結果
+plt.figure(figsize=(10, 4))
+for index, (image, prediction) in enumerate(zip(X_test[:8], y_pred[:8])):
+    plt.subplot(2, 4, index + 1)
+    plt.imshow(image.reshape(8, 8), cmap=plt.cm.gray_r)
+    plt.title(f"Pred: {prediction}")
+    plt.axis('off')
+
+plt.suptitle("SVM Prediction on Handwritten Digits", fontsize=16)
+plt.show()
