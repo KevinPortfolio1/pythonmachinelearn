@@ -9,3 +9,4 @@
  ## scikit LinearRegression 2025/09/19  
  ## scikit train_test_split 2025/09/23  
  ## scikit svm 方向  2025/10/12  
+ ## 機器學習 資料大小 方向 2025/10/14  
